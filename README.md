@@ -22,7 +22,7 @@ Kraken is a version control system specifically designed for artists to manage c
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/artvcs.git
+git clone https://github.com/jocoso/kraken.git
 cd kraken
 ```
 
