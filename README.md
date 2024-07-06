@@ -14,7 +14,7 @@ Kraken is a version control system specifically designed for artists to manage c
 
 - **Backend**: Node.js, Express.js
 - **Database**: PostgreSQL
-- **Frontend**: (Optional based on your choice, e.g., React, Angular, or just HTML/CSS/JavaScript for simpler setups)
+- **Frontend**: TBD
 - **Authentication**: JSON Web Tokens (JWT)
 
 ## Getting Started
