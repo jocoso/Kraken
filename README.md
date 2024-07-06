@@ -35,7 +35,7 @@ npm install
 ### Configure your database
 
 - Ensure PostgreSQL is installed and running.
-- Create a database named `artvcs`.
+- Create a database named `kraken`.
 - Configure database credentials in your configuration file.
 
 ### Start the server
@@ -49,11 +49,6 @@ npm start
 ## Documentation
 
 Further documentation detailing API endpoints and system architecture is available in the `docs` folder.
-
-## Contributing
-
-Contributions are welcome! Please read `CONTRIBUTING.md` for details on our code of conduct, and the process for submitting pull requests.
-
 ## License
 
 This project is licensed under the MIT License - see the `LICENSE.md` file for details.
