@@ -2,6 +2,7 @@
 
 const { program } = require('commander');
 const inquirer = require('inquirer');
+const uploadFile = require('./drive/drivefunct.js')
 
 program
     .version('1.0.0')
@@ -56,6 +57,17 @@ program
         const questions = [
             {
                 type: 'input',
+                name: 'client_email',
+                message: 'Enter your Google service account email:',
+            },
+            {
+                type: 'input',
+                name: 'private_key',
+                message: 'Enter your Google service account private key:',
+                mask: ' '
+            },
+            {
+                type: 'input',
                 name: 'message',
                 message: 'Commit Message: ',
                 validate: (input) => {
@@ -68,7 +80,8 @@ program
             }
         ];
 
-        inquirer.prompt(questions).then(answers => {
+        inquirer.prompt(questions).then(async answers => {
+            await uploadFile(answers.client_email, answers.private_key);
             console.log(`Committed with message:\n ${answers.message}`);
             // Add the logic to interact with the database
         })
