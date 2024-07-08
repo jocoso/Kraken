@@ -7,7 +7,7 @@ const path = require('path');
  * Insert new file
  * @return{obj} file ID
  */
-async function uploadFile(/*clientEmail, privateKey*/) {
+async function createFiles(/*clientEmail, privateKey*/) {
     
 
     // Get credentials and build service
@@ -46,7 +46,7 @@ async function uploadFile(/*clientEmail, privateKey*/) {
     }
 }
 
-async function listFiles() {
+async function readFiles() {
     const auth = new GoogleAuth(
         {
             keyFile: path.normalize('C:\\Users\\Josh\\Downloads\\kraken-test.json'),
@@ -75,8 +75,17 @@ async function listFiles() {
     }
 }
 
+async function updateFiles(data) {
+
+}
+
+async function deleteFiles(fileId) {
+
+}
 
 module.exports = {
-    uploadFile,
-    listFiles
+    createFiles,
+    readFiles,
+    updateFiles,
+    deleteFiles,
 };
