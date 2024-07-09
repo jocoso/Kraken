@@ -22,6 +22,11 @@ program
         const configfile = path.join(krakendir, 'kraken.json');
 
         // Checking if exists already
+        if(options.force && fs.existsSync(krakendir)) {
+            // Delete current config file
+            fs.rmSync(krakendir, { recursive: true, force: true });
+        } 
+        
         if(fs.existsSync(configfile)) {
             console.log('Artfile has already been initialized in this directory.');
             return;
