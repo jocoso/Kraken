@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const watcher = require("../scripts/watcher");
 
 async function initializer(options) {
     console.log(
@@ -27,6 +28,8 @@ async function initializer(options) {
         // If folder does not exists
         fs.mkdirSync(krakendir); // Make it
     }
+
+    watcher();
 
     // Creating a basic conf file
     const configData = {
