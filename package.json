@@ -4,7 +4,7 @@
   "description": "Kraken is a version control system specifically designed for artists to manage changes and revisions in their digital artworks.",
   "main": "cli.js",
   "scripts": {
-    "test": "node tests/test.js",
+    "test": "jest --watchAll",
     "start": "node cli.js"
   },
   "repository": {
@@ -36,5 +36,8 @@
   },
   "bin": {
     "kraken": "./cli.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
