@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const watcher = require("../scripts/watcher");
+
 async function initializer(options) {
     console.log(
         `Initializing Kraken Art Version Control System repository${
@@ -37,12 +39,15 @@ async function initializer(options) {
     try {
         fs.writeFileSync(configfile, JSON.stringify(configData, null, 4));
         console.log("Artfile has been successfully initialized.");
+        watcher();
     } catch (error) {
         console.error(
             "Error occurred while creating configuration file:",
             error
         );
     }
+
+    
 }
 
 module.exports = initializer;
