@@ -1,52 +1,24 @@
 #!/usr/bin/env node
 
 const { program } = require('commander');
+const figlet = require('figlet');
 const inquirer = require('inquirer');
 const {uploadFile, listFiles} = require('./drive/drivefunct.js');
-const fs = require('fs');
-const path = require('path');
+
+const initializer = require('./commands/initializer.js');
+
+console.log(figlet.textSync("Kraken Art VCS"));
 
 program
     .version('1.0.0')
     .description('Kraken Art Version Control System');
 
+// Initialize Version Control System
 program
     .command('init')
     .description('Initialize a new Kraken Art Version Control System repository')
     .option('-f, --force', 'Force initialization')
-    .action((options) => {
-        console.log(`Initializing Kraken Art Version Control System repository${options.force? ', forcefully' : ''}`);
-
-        const currentdir = process.cwd();
-        const krakendir = currentdir + '/.kraken';
-        const configfile = path.join(krakendir, 'kraken.json');
-
-        // Checking if exists already
-        if(options.force && fs.existsSync(krakendir)) {
-            // Delete current config file
-            fs.rmSync(krakendir, { recursive: true, force: true });
-        } 
-        
-        if(fs.existsSync(configfile)) {
-            console.log('Artfile has already been initialized in this directory.');
-            return;
-        } else if(!fs.existsSync(krakendir)) {
-            fs.mkdirSync(krakendir);
-        }
-
-        // Creating a basic conf file
-        const configData = {
-            project:  path.basename(currentdir), // TODO(developer): placeholder name replaced with file name
-            initialized: new Date().toISOString()
-        };
-
-        try {
-            fs.writeFileSync(configfile, JSON.stringify(configData, null, 4));
-            console.log('Artfile has been successfully initialized.');
-        } catch (error) {
-            console.error('Error occurred while creating configuration file:', error);
-        }
-    });
+    .action(options => initializer(options));
     
 
 program
