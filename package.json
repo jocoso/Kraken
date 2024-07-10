@@ -5,7 +5,7 @@
   "main": "cli.js",
   "scripts": {
     "test": "jest --watchAll",
-    "start": "node cli.js"
+    "build": "node cli.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jocoso/kraken#readme",
   "dependencies": {
+    "chokidar": "^3.6.0",
     "commander": "^12.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

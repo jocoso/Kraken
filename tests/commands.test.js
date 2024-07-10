@@ -1,5 +1,5 @@
 const path = require('path');
-const initializer = require('../commands/initializer.js');
+const initializer = require('../src/commands/initializer.js');
 const fs = require('fs');
 
 jest.mock('fs');
