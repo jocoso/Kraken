@@ -1,7 +1,31 @@
 const fs = require("fs");
 const path = require("path");
+const {v1: uuidv1, v4: uuidv4, } = require("uuid")
 
 const watcher = require("../scripts/watcher");
+
+const currentdir = process.cwd();
+const krakendir = currentdir + "/.kraken";
+const configfile = path.join(krakendir, "kraken.json");
+
+const createMaestro = async () => {
+    // TODO: Implement the creation of a Maestro repository.
+    // This might involve setting up a watcher, creating a.kraken directory,
+    // and writing a basic configuration file.
+
+    // Example:
+    // watcher(); // Set up a watcher for changes in the.kraken directory
+    // fs.mkdirSync(krakendir); // Create the.kraken directory
+    // fs.writeFileSync(configfile, JSON.stringify({ /* Initial configuration */ }, null, 2)); // Write a basic configuration file  
+
+    // Return a promise to indicate completion
+    const maestro = {
+        id: (uuidv4().toString()),
+        filename: "",
+        path: path.basename(currentdir)
+    }
+}
+
 
 async function initializer(options) {
     console.log(
@@ -9,10 +33,6 @@ async function initializer(options) {
             options.force ? ", forcefully" : ""
         }`
     );
-
-    const currentdir = process.cwd();
-    const krakendir = currentdir + "/.kraken";
-    const configfile = path.join(krakendir, "kraken.json");
 
     // Checking if exists already
     if (options.force && fs.existsSync(krakendir)) {
@@ -30,16 +50,21 @@ async function initializer(options) {
         fs.mkdirSync(krakendir); // Make it
     }
 
-    // Creating a basic conf file
-    const configData = {
-        project: path.basename(currentdir), // TODO(developer): placeholder name replaced with file name
-        initialized: new Date().toISOString(),
-    };
-
     try {
+        watcher();
+
+         // Creating a basic conf file
+        const configData = {
+            projectName: path.basename(currentdir), 
+            initializedOn: new Date().toISOString(),
+            artworks: [
+
+            ]
+        };
+        
         fs.writeFileSync(configfile, JSON.stringify(configData, null, 4));
         console.log("Artfile has been successfully initialized.");
-        watcher();
+        
     } catch (error) {
         console.error(
             "Error occurred while creating configuration file:",
