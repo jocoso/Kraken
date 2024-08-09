@@ -4,10 +4,12 @@
 # Kraken Art Version Control System
 
 Kraken is a dedicated version control system designed for artists to manage and track changes in their digital artworks. It offers a suite of commands that mimic traditional VCS operations but are tailored specifically for art file management.
+![ezgif-2-fb4342ca42](https://github.com/user-attachments/assets/e79afb24-309f-4166-a1d0-8368b565ded1)
 
-![alt text](./src/assets/image.png)
+
 
 ## Features
+
 
 - **Initialize Repository**: Set up your art project with `kraken init`. This command prepares the project directory and sets up necessary configurations.
 - **Add Artworks**: Use `kraken addart` to stage artworks for versioning, similar to `git add`.
@@ -48,6 +50,7 @@ Force reinitialize the project:
 ```bash
 kraken init --force
 ```
+![alt text](./src/assets/image.png)
 
 ## Configuration
 
